@@ -19,13 +19,13 @@ const GameBoard = () => {
     {
       id: 1,
       name: "Người chơi 1",
-      balance: 1000,
+      balance: 0,
       betting: { bau: 0, cua: 0, tom: 0, ca: 0, ga: 0, nai: 0 },
     },
     {
       id: 2,
       name: "Người chơi 2",
-      balance: 1000,
+      balance: 0,
       betting: { bau: 0, cua: 0, tom: 0, ca: 0, ga: 0, nai: 0 },
     },
   ]);
@@ -89,7 +89,7 @@ const GameBoard = () => {
       const newPlayer = {
         id: players.length + 1,
         name: newPlayerName,
-        balance: 1000,
+        balance: 0,
         betting: { bau: 0, cua: 0, tom: 0, ca: 0, ga: 0, nai: 0 },
       };
       setPlayers([...players, newPlayer]);
