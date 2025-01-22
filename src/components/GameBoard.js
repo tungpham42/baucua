@@ -40,7 +40,14 @@ const GameBoard = () => {
     setDice(newDice);
     const rolledIcons = newDice.map((idx) => texts[idx]);
     setResult(rolledIcons.join(", "));
-
+    setTimeout(() => {
+      document.querySelectorAll(".dice").forEach((diceElement) => {
+        diceElement.classList.add("shake");
+        setTimeout(() => {
+          diceElement.classList.remove("shake");
+        }, 500); // Sau khi hiệu ứng shake xong, loại bỏ lớp shake
+      });
+    }, 100);
     // Cập nhật số dư của mỗi người chơi
     const newPlayers = players.map((player) => {
       let winnings = 0;
