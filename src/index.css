@@ -1,0 +1,93 @@
+/* Cơ bản */
+body {
+  background-color: #f5f5f5;
+  font-family: "Mali", serif !important;
+  color: #333;
+}
+
+.game-board {
+  background-color: wheat;
+  padding: 50px 0;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  font-size: 5rem !important;
+  color: #ff6f61 !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Xúc xắc */
+.dice {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: 10px;
+}
+
+.dice:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.dice img {
+  max-width: 100px;
+  max-height: 100px;
+}
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.dice.shake {
+  animation: shake 0.5s ease-in-out;
+}
+/* Nút lắc xúc xắc */
+button {
+  background-color: #ff6f61 !important;
+  border: none !important;
+  padding: 15px 30px !important;
+  font-size: 1.5rem !important;
+  color: white !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+button:hover {
+  background-color: #ff8a80 !important;
+  transform: scale(1.1) !important;
+}
+
+button:active {
+  background-color: #ff4747 !important;
+  transform: scale(1) !important;
+}
+
+/* Kết quả */
+p {
+  font-size: 1.5rem !important;
+  margin-top: 20px !important;
+  color: #333;
+  font-weight: bold;
+}
+.result {
+  font-size: 2rem !important;
+  margin-top: 20px !important;
+  color: #ff6f61 !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
