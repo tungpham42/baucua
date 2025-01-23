@@ -18,7 +18,7 @@ const Dice3D = ({ value }) => {
     <div className="dice-container">
       <div className="dice" style={{ transform: rotations[value] }}>
         {animals.map((animal, index) => (
-          <div key={index} className={`face face-${index + 1}`}>
+          <div key={index} className={`shadow-lg face face-${index + 1}`}>
             <img
               src={`/images/${animal}.png`}
               alt={animal}
