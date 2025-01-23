@@ -43,6 +43,8 @@ const GameBoard = () => {
   });
   const [showRulesModal, setShowRulesModal] = useState(false);
   const rollDice = () => {
+    const audio = new Audio("/sounds/dice.mp3");
+    audio.play();
     const newDice = [0, 1, 2].map(() => Math.floor(Math.random() * 6));
     setDice(newDice);
     setResult(newDice.map((idx) => texts[idx]).join(", "));
