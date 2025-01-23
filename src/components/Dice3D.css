@@ -9,7 +9,7 @@
   height: 120px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 1s ease-out;
+  transition: transform 2s ease-out;
 }
 
 .face {
