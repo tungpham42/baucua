@@ -132,6 +132,12 @@ const GameBoard = () => {
     closeEditModal();
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addPlayer();
+    }
+  };
+
   return (
     <div className="game-board text-center position-relative">
       <h1>Bầu Cua</h1>
@@ -167,6 +173,7 @@ const GameBoard = () => {
             type="text"
             value={newPlayerName}
             onChange={(e) => setNewPlayerName(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Nhập tên người chơi"
             isInvalid={!!error}
           />
