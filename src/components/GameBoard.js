@@ -209,7 +209,7 @@ const GameBoard = () => {
             <thead>
               <tr>
                 <th>Con Vật</th>
-                <th>Cược</th>
+                <th>Cược (mồi/bia)</th>
               </tr>
             </thead>
             <tbody>
@@ -238,7 +238,7 @@ const GameBoard = () => {
               ))}
             </tbody>
           </Table>
-          <p>Số tiền còn lại: {player.balance} đồng</p>
+          <p>Số lượng còn lại: {player.balance} mồi/bia</p>
         </div>
       ))}
 

@@ -25,12 +25,12 @@ const EditPlayerModal = ({
         />
       </Form.Group>
       <Form.Group className="mt-3">
-        <Form.Label>Số tiền còn lại</Form.Label>
+        <Form.Label>Số mồi/bia còn lại</Form.Label>
         <Form.Control
           type="text"
           value={balance}
           onChange={onBalanceChange}
-          placeholder="Nhập số tiền mới"
+          placeholder="Nhập số mồi/bia mới"
         />
       </Form.Group>
     </Modal.Body>
