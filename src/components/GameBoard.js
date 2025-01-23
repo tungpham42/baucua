@@ -49,7 +49,7 @@ const GameBoard = () => {
           </Col>
         ))}
       </Row>
-      <Button variant="primary" onClick={rollDice} className="my-3">
+      <Button variant="primary" onClick={rollDice} className="my-4">
         Lắc Xúc Xắc
       </Button>
       <p className="mt-3">Kết quả: {result}</p>
