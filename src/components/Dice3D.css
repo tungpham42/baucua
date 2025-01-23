@@ -22,30 +22,33 @@
 }
 @media all and (max-width: 768px) {
   .dice-container {
-    perspective: 750px;
+    perspective: calc(1000px * 2 / 3);
+  }
+  .dice-col {
+    padding: 0 !important;
   }
   .dice,
   .face {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
   .face-1 {
-    transform: rotateY(0deg) translateZ(45px) !important;
+    transform: rotateY(0deg) translateZ(40px) !important;
   }
   .face-2 {
-    transform: rotateY(-90deg) translateZ(45px) !important;
+    transform: rotateY(-90deg) translateZ(40px) !important;
   }
   .face-3 {
-    transform: rotateY(180deg) translateZ(45px) !important;
+    transform: rotateY(180deg) translateZ(40px) !important;
   }
   .face-4 {
-    transform: rotateY(90deg) translateZ(45px) !important;
+    transform: rotateY(90deg) translateZ(40px) !important;
   }
   .face-5 {
-    transform: rotateX(-90deg) translateZ(45px) !important;
+    transform: rotateX(-90deg) translateZ(40px) !important;
   }
   .face-6 {
-    transform: rotateX(90deg) translateZ(45px) !important;
+    transform: rotateX(90deg) translateZ(40px) !important;
   }
 }
 

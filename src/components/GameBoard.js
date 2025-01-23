@@ -32,7 +32,7 @@ const GameBoard = () => {
       <h1>Bầu Cua</h1>
       <Row>
         {dice.map((value, idx) => (
-          <Col key={idx}>
+          <Col key={idx} className="dice-col">
             <Dice3D value={value} />
           </Col>
         ))}
