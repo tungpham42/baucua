@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Row, Col, Table, Form } from "react-bootstrap";
 import Dice3D from "./Dice3D";
 import EditPlayerModal from "./EditPlayerModal"; // Import the component
+import RulesModal from "./RulesModal";
 
 const icons = [
   "/images/bau.png",
@@ -40,7 +41,7 @@ const GameBoard = () => {
     name: "",
     balance: 0,
   });
-
+  const [showRulesModal, setShowRulesModal] = useState(false);
   const rollDice = () => {
     const newDice = [0, 1, 2].map(() => Math.floor(Math.random() * 6));
     setDice(newDice);
@@ -111,6 +112,14 @@ const GameBoard = () => {
     setEditModal({ ...editModal, balance: parseInt(e.target.value, 10) || 0 });
   };
 
+  const openRulesModal = () => {
+    setShowRulesModal(true);
+  };
+
+  const closeRulesModal = () => {
+    setShowRulesModal(false);
+  };
+
   const savePlayerDetails = () => {
     const updatedPlayers = players.map((player) =>
       player.id === editModal.playerId
@@ -122,8 +131,15 @@ const GameBoard = () => {
   };
 
   return (
-    <div className="game-board text-center">
+    <div className="game-board text-center position-relative">
       <h1>Bầu Cua</h1>
+      <Button
+        variant="primary"
+        onClick={openRulesModal}
+        style={{ position: "absolute", top: "25px", right: "25px" }}
+      >
+        Xem Luật Chơi
+      </Button>
       <Row>
         {dice.map((value, idx) => (
           <Col key={idx}>
@@ -220,6 +236,7 @@ const GameBoard = () => {
         onBalanceChange={handleEditBalanceChange}
         onSave={savePlayerDetails}
       />
+      <RulesModal show={showRulesModal} handleClose={closeRulesModal} />
     </div>
   );
 };
