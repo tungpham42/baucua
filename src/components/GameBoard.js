@@ -136,7 +136,13 @@ const GameBoard = () => {
       <Button
         variant="primary"
         onClick={openRulesModal}
-        style={{ position: "absolute", top: "25px", right: "25px" }}
+        className="position-absolute rulesBtn"
+        style={{
+          top: "25px",
+          right: "25px",
+          fontSize: "1rem",
+          padding: "0.5rem 1rem !important",
+        }}
       >
         Xem Luật Chơi
       </Button>
