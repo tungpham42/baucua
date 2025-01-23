@@ -170,7 +170,7 @@ const GameBoard = () => {
               onClick={() => openEditModal(player.id, player.name)}
               className="ms-3"
             >
-              Sửa tên
+              Sửa
             </Button>
             <Button
               variant="danger"
