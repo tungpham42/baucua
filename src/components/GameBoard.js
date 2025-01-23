@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Table, Form } from "react-bootstrap";
+import { Button, Row, Col, Table, Form, Modal } from "react-bootstrap";
 import Dice from "./Dice";
 
 const icons = [
@@ -33,6 +33,11 @@ const GameBoard = () => {
   const [result, setResult] = useState("");
   const [newPlayerName, setNewPlayerName] = useState("");
   const [error, setError] = useState("");
+  const [editModal, setEditModal] = useState({
+    show: false,
+    playerId: null,
+    name: "",
+  });
 
   const rollDice = () => {
     const newDice = [0, 1, 2].map(() => Math.floor(Math.random() * 6));
@@ -95,6 +100,34 @@ const GameBoard = () => {
     setPlayers(updatedPlayers);
   };
 
+  const openEditModal = (playerId, name) => {
+    setEditModal({ show: true, playerId, name });
+  };
+
+  const closeEditModal = () => {
+    setEditModal({ show: false, playerId: null, name: "" });
+  };
+
+  const handleEditNameChange = (e) => {
+    setEditModal({ ...editModal, name: e.target.value });
+  };
+
+  const savePlayerName = () => {
+    const updatedPlayers = players.map((player) =>
+      player.id === editModal.playerId
+        ? { ...player, name: editModal.name }
+        : player
+    );
+    setPlayers(updatedPlayers);
+    closeEditModal();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addPlayer();
+    }
+  };
+
   return (
     <div className="game-board text-center">
       <h1>Bầu Cua</h1>
@@ -117,6 +150,7 @@ const GameBoard = () => {
             type="text"
             value={newPlayerName}
             onChange={(e) => setNewPlayerName(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Nhập tên người chơi"
             isInvalid={!!error}
           />
@@ -129,7 +163,23 @@ const GameBoard = () => {
       {players.map((player) => (
         <div key={player.id}>
           <hr />
-          <h3>{player.name}</h3>
+          <h3>
+            {player.name}{" "}
+            <Button
+              variant="primary"
+              onClick={() => openEditModal(player.id, player.name)}
+              className="ms-3"
+            >
+              Sửa tên
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => deletePlayer(player.id)}
+              className="ms-3"
+            >
+              Xóa
+            </Button>
+          </h3>
           <Table bordered className="mt-3">
             <thead>
               <tr>
@@ -164,15 +214,33 @@ const GameBoard = () => {
             </tbody>
           </Table>
           <p>Số tiền còn lại: {player.balance} đồng</p>
-          <Button
-            variant="danger"
-            onClick={() => deletePlayer(player.id)}
-            className="mb-3"
-          >
-            Xóa người chơi
-          </Button>
         </div>
       ))}
+
+      <Modal show={editModal.show} onHide={closeEditModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Sửa tên người chơi</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group>
+            <Form.Label>Tên mới</Form.Label>
+            <Form.Control
+              type="text"
+              value={editModal.name}
+              onChange={handleEditNameChange}
+              placeholder="Nhập tên mới"
+            />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeEditModal}>
+            Hủy
+          </Button>
+          <Button variant="primary" onClick={savePlayerName}>
+            Lưu
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
