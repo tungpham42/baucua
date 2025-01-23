@@ -20,6 +20,34 @@
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px #0003 !important;
 }
+@media all and (max-width: 768px) {
+  .dice-container {
+    perspective: 750px;
+  }
+  .dice,
+  .face {
+    width: 90px;
+    height: 90px;
+  }
+  .face-1 {
+    transform: rotateY(0deg) translateZ(45px) !important;
+  }
+  .face-2 {
+    transform: rotateY(-90deg) translateZ(45px) !important;
+  }
+  .face-3 {
+    transform: rotateY(180deg) translateZ(45px) !important;
+  }
+  .face-4 {
+    transform: rotateY(90deg) translateZ(45px) !important;
+  }
+  .face-5 {
+    transform: rotateX(-90deg) translateZ(45px) !important;
+  }
+  .face-6 {
+    transform: rotateX(90deg) translateZ(45px) !important;
+  }
+}
 
 .dice img.dice-face-image {
   width: 100%;
