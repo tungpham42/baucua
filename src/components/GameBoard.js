@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Row, Col, Table, Form } from "react-bootstrap";
-import Dice from "./Dice";
+import Dice3D from "./Dice3D";
 import EditPlayerModal from "./EditPlayerModal"; // Import the component
 
 const icons = [
@@ -45,14 +45,7 @@ const GameBoard = () => {
     const newDice = [0, 1, 2].map(() => Math.floor(Math.random() * 6));
     setDice(newDice);
     setResult(newDice.map((idx) => texts[idx]).join(", "));
-    setTimeout(() => {
-      document.querySelectorAll(".dice").forEach((diceElement) => {
-        diceElement.classList.add("shake");
-        setTimeout(() => {
-          diceElement.classList.remove("shake");
-        }, 500); // Sau khi hiệu ứng shake xong, loại bỏ lớp shake
-      });
-    }, 100);
+
     const updatedPlayers = players.map((player) => {
       let winnings = 0;
       newDice.forEach((idx) => {
@@ -132,9 +125,9 @@ const GameBoard = () => {
     <div className="game-board text-center">
       <h1>Bầu Cua</h1>
       <Row>
-        {dice.map((num, idx) => (
+        {dice.map((value, idx) => (
           <Col key={idx}>
-            <Dice icon={icons[num]} />
+            <Dice3D value={value} />
           </Col>
         ))}
       </Row>

@@ -1,0 +1,47 @@
+.dice-container {
+  perspective: 1000px;
+  display: inline-block;
+  margin: 0;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-out;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.dice img.dice-face-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.face-1 {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.face-2 {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+.face-3 {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.face-4 {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.face-5 {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.face-6 {
+  transform: rotateX(180deg) translateZ(50px);
+}
