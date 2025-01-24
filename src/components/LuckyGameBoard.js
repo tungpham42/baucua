@@ -34,6 +34,7 @@ const LuckyGameBoard = () => {
   const [dice, setDice] = useState([0, 0, 0]);
   const [result, setResult] = useState("");
   const [newPlayerName, setNewPlayerName] = useState("");
+  const [isResultVisible, setIsResultVisible] = useState(false); // State to trigger result animation
   const [error, setError] = useState("");
   const [editModal, setEditModal] = useState({
     show: false,
@@ -50,9 +51,18 @@ const LuckyGameBoard = () => {
   const rollDice = () => {
     const audio = new Audio("/sounds/dice.mp3");
     audio.play();
+    // Roll dice
     const newDice = [0, 1, 2].map(() => Math.floor(Math.random() * 6));
     setDice(newDice);
-    setResult(newDice.map((idx) => texts[idx]).join(", "));
+
+    setIsResultVisible(false);
+    setResult(""); // Reset result text
+    // Delay the result display with animation trigger
+    setTimeout(() => {
+      const rolledResult = newDice.map((idx) => texts[idx]).join(", ");
+      setResult(rolledResult);
+      setIsResultVisible(true); // Trigger result visibility and animation
+    }, 2000); // 2-second delay
 
     const updatedPlayers = players.map((player) => {
       let winnings = 0;
@@ -183,7 +193,9 @@ const LuckyGameBoard = () => {
       <Button variant="primary" onClick={rollDice} className="my-3">
         Lắc Xúc Xắc
       </Button>
-      <p className="mt-3">Kết quả: {result}</p>
+      <p className={`mt-3 ${isResultVisible ? "slide-up" : ""}`}>
+        Kết quả: {result}
+      </p>
       <hr />
       <div ref={topBarRef} className="top-bar">
         {players.map((player, index) => (
