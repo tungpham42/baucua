@@ -105,7 +105,8 @@ p {
   color: #ff6f61 !important;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
-.rulesBtn {
+.rulesBtn,
+.scrollTopBtn {
   padding: 0.5rem 1rem !important;
   font-size: 1rem !important;
 }

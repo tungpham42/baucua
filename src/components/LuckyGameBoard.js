@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Row, Col, Table, Form } from "react-bootstrap";
 import Dice3D from "./Dice3D";
-import EditPlayerModal from "./EditPlayerModal"; // Import the component
+import EditPlayerModal from "./EditPlayerModal";
 import RulesModal from "./RulesModal";
 
 const icons = [
@@ -42,6 +42,11 @@ const LuckyGameBoard = () => {
     balance: 0,
   });
   const [showRulesModal, setShowRulesModal] = useState(false);
+
+  const playerRefs = useRef(players.map(() => React.createRef()));
+
+  const topBarRef = useRef(null);
+
   const rollDice = () => {
     const audio = new Audio("/sounds/dice.mp3");
     audio.play();
@@ -91,11 +96,15 @@ const LuckyGameBoard = () => {
     setPlayers([...players, newPlayer]);
     setNewPlayerName("");
     setError("");
+    playerRefs.current.push(React.createRef());
   };
 
   const deletePlayer = (playerId) => {
     const updatedPlayers = players.filter((player) => player.id !== playerId);
     setPlayers(updatedPlayers);
+    playerRefs.current = playerRefs.current.filter(
+      (_, index) => players[index].id !== playerId
+    );
   };
 
   const openEditModal = (playerId, name, balance) => {
@@ -138,6 +147,16 @@ const LuckyGameBoard = () => {
     }
   };
 
+  const scrollToPlayer = (index) => {
+    playerRefs.current[index].current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToTopBar = () => {
+    topBarRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="game-board text-center position-relative">
       <h1>Bầu Cua</h1>
@@ -166,6 +185,18 @@ const LuckyGameBoard = () => {
       </Button>
       <p className="mt-3">Kết quả: {result}</p>
       <hr />
+      <div ref={topBarRef} className="top-bar">
+        {players.map((player, index) => (
+          <Button
+            key={player.id}
+            variant="primary"
+            onClick={() => scrollToPlayer(index)}
+            className="mx-2 my-3"
+          >
+            {player.name}
+          </Button>
+        ))}
+      </div>
       <div className="mb-3 col-8 mx-auto">
         <Form.Group>
           <Form.Label>Tên người chơi mới</Form.Label>
@@ -183,8 +214,8 @@ const LuckyGameBoard = () => {
           Thêm người chơi
         </Button>
       </div>
-      {players.map((player) => (
-        <div key={player.id}>
+      {players.map((player, index) => (
+        <div key={player.id} ref={playerRefs.current[index]}>
           <hr />
           <h3>
             {player.name}{" "}
@@ -253,6 +284,18 @@ const LuckyGameBoard = () => {
         onSave={savePlayerDetails}
       />
       <RulesModal show={showRulesModal} handleClose={closeRulesModal} />
+      <Button
+        variant="primary"
+        onClick={scrollToTopBar}
+        className="scrollTopBtn"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          left: "20px",
+        }}
+      >
+        Người chơi
+      </Button>
     </div>
   );
 };
