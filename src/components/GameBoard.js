@@ -42,8 +42,7 @@ const GameBoard = () => {
       </Button>
       <p className={`mt-3 ${isResultVisible ? "slide-up" : ""}`}>
         Kết quả: {result}
-      </p>{" "}
-      {/* Apply fade-in animation */}
+      </p>
     </div>
   );
 };
