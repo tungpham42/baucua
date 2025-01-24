@@ -205,7 +205,7 @@ const LuckyGameBoard = () => {
               Xóa
             </Button>
           </h3>
-          <Table bordered className="mt-3">
+          <Table bordered striped className="mt-3">
             <thead>
               <tr>
                 <th>Con Vật</th>
@@ -220,7 +220,7 @@ const LuckyGameBoard = () => {
                       src={icons[index]}
                       alt={animal}
                       style={{ width: "40px" }}
-                    />
+                    />{" "}
                     {texts[index]}
                   </td>
                   <td>
