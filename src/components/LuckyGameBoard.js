@@ -209,6 +209,7 @@ const LuckyGameBoard = () => {
           </Button>
         ))}
       </div>
+      <hr />
       <div className="mb-3 col-8 mx-auto">
         <Form.Group>
           <Form.Label>Tên người chơi mới</Form.Label>
