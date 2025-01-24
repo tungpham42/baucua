@@ -224,7 +224,7 @@ const LuckyGameBoard = () => {
                     {texts[index]}
                   </td>
                   <td>
-                    <input
+                    <Form.Control
                       type="number"
                       value={player.betting[animal]}
                       onChange={(e) =>
@@ -232,7 +232,8 @@ const LuckyGameBoard = () => {
                       }
                       min="0"
                       style={{ width: "80px" }}
-                    />
+                      className="mx-auto"
+                    ></Form.Control>
                   </td>
                 </tr>
               ))}
