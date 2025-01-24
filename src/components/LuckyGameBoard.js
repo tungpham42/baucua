@@ -248,7 +248,7 @@ const LuckyGameBoard = () => {
               Xóa
             </Button>
           </h3>
-          <Table bordered striped className="mt-3">
+          <Table bordered striped hover className="mt-3">
             <thead>
               <tr>
                 <th>Con Vật</th>
