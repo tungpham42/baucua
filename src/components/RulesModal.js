@@ -14,8 +14,8 @@ const RulesModal = ({ show, handleClose }) => {
         </p>
         <ul>
           <li>
-            Trò chơi này sử dụng 3 viên xí ngầu với các hình ảnh Bầu, Cua, Cá,
-            Cọp, Gà, Nai.
+            Trò chơi này sử dụng 3 viên xí ngầu với các hình ảnh Bầu, Cua, Tôm,
+            Cá, Gà, Nai.
           </li>
           <li>
             Người chơi sẽ đặt cược vào các con vật xuất hiện trên mặt của viên

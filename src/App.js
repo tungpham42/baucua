@@ -4,7 +4,7 @@ import GameBoard from "./components/GameBoard";
 import LuckyGameBoard from "./components/LuckyGameBoard";
 import { Container } from "react-bootstrap";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Container className="text-center col-12 p-0">
@@ -15,6 +15,6 @@ function App() {
       </Container>
     </Router>
   );
-}
+};
 
 export default App;
