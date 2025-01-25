@@ -46,6 +46,7 @@ const LuckyGameBoard = () => {
 
   const playerRefs = useRef(players.map(() => React.createRef()));
 
+  const shakeBtnRef = useRef(null);
   const topBarRef = useRef(null);
 
   const rollDice = () => {
@@ -167,6 +168,10 @@ const LuckyGameBoard = () => {
     topBarRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToShakeBtn = () => {
+    shakeBtnRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="game-board text-center position-relative">
       <h1>Bầu Cua</h1>
@@ -183,7 +188,7 @@ const LuckyGameBoard = () => {
       >
         Xem Luật Chơi
       </Button>
-      <Row>
+      <Row ref={shakeBtnRef}>
         {dice.map((value, idx) => (
           <Col key={idx}>
             <Dice3D value={value} />
@@ -297,6 +302,18 @@ const LuckyGameBoard = () => {
         onSave={savePlayerDetails}
       />
       <RulesModal show={showRulesModal} handleClose={closeRulesModal} />
+      <Button
+        variant="primary"
+        onClick={scrollToShakeBtn}
+        className="scrollShakeBtn"
+        style={{
+          position: "fixed",
+          bottom: "80px",
+          left: "20px",
+        }}
+      >
+        Lắc xúc xắc
+      </Button>
       <Button
         variant="primary"
         onClick={scrollToTopBar}
