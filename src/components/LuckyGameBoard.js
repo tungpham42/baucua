@@ -199,7 +199,7 @@ const LuckyGameBoard = () => {
         Lắc Xúc Xắc
       </Button>
       <p className={`mt-3 ${isResultVisible ? "slide-up" : ""}`}>
-        Kết quả: {result}
+        Kết quả: {result || "Chưa có, mời bạn lắc"}
       </p>
       <hr />
       <div ref={topBarRef} className="top-bar">
